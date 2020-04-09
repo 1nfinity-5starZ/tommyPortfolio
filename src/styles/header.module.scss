@@ -1,0 +1,14 @@
+@import 'variables.scss';
+
+.header {
+    nav {
+        a {
+            margin-right: 8px;
+            text-decoration: none;
+
+            &:hover {
+                color: $primary-darker;
+            }
+        }
+    }
+}

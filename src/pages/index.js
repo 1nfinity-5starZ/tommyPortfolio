@@ -10,7 +10,7 @@ const IndexPage = () => {
     query {
       heroImage: file(relativePath: { eq: "hero.jpg" }) {
         childImageSharp {
-          fluid(maxHeight: 300) {
+          fluid {
             ...GatsbyImageSharpFluid
           }
         }
@@ -21,7 +21,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', marginTop: '-1rem' }}>
         <div 
           style={{ 
             height: '100%', 
@@ -37,7 +37,7 @@ const IndexPage = () => {
         >
           <h2 style={{ textAlign: 'center' }}>Web Development</h2>
         </div>
-        <Img fluid={data.heroImage.childImageSharp.fluid} style={{ maxHeight: 350 }}/>
+        <Img fluid={data.heroImage.childImageSharp.fluid} style={{ maxHeight: 350 }} objectPosition="50% 0%"/>
       </div>
       <div style={{ fontStyle: 'italic', textAlign: 'center' }}>
         image from unsplash

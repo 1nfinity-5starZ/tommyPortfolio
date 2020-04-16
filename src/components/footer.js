@@ -1,26 +1,34 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import styled from 'styled-components';
+import { FaGithub } from 'react-icons/fa';
 
-const Footer = ({ theme }) => (  
-  <footer
-    style={{ 
-      backgroundColor: theme.primaryColor,
-      marginTop: 'auto',
-      color: '#FFF'
-    }}
-  >
+import variables from '../variables.json';
+
+const StyledFooter = styled.footer`
+  background-color #333;
+  margin-top: auto;
+  color: #FFF;
+  display: flex;
+`;
+
+const Footer = () => (  
+  <StyledFooter>
     <section
       style={{
         maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        padding: `2rem 1rem`,
+        margin: '0 auto',
+        flex: 1
       }}
     >
-      © {new Date().getFullYear()}, Built with
-      {` `}
-      <a href="https://www.gatsbyjs.org">Gatsby</a>
+      © {new Date().getFullYear()}
+      <nav>
+        <span><FaGithub/></span>
+      </nav>
     </section>
-  </footer>
+  </StyledFooter>
 )
 
 Footer.propTypes = {

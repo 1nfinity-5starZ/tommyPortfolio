@@ -3,5 +3,23 @@
   "primaryLighter": "#8B7AAE",
   "primaryLight": "#655091",
   "primaryDark": "#2B1657",
-  "primaryDarker": "#16063A"
+  "primaryDarker": "#16063A",
+
+  "colorPrimary0": "#973253",	
+  "colorPrimary1": "#E297AF",
+  "colorPrimary2": "#BD5E7C",
+  "colorPrimary3": "#711331",
+  "colorPrimary4": "#4B0018",
+
+  "colorSecondary1_0": "#6C256F",
+  "colorSecondary1_1": "#A46FA6",
+  "colorSecondary1_2": "#88468A",
+  "colorSecondary1_3": "#510E53",
+  "colorSecondary1_4": "#350037",
+
+  "colorSecondary2_0": "#4A2D73",
+  "colorSecondary2_1": "#8E79AD",
+  "colorSecondary2_2": "#6A4E90",
+  "colorSecondary2_3": "#301557",
+  "colorSecondary2_4": "#1B053A"
 }

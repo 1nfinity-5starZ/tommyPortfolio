@@ -2,11 +2,12 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState } from "react"
 import { FaBars } from 'react-icons/fa';
+import styled from 'styled-components';
 
 import FlexCenter from './flexCenter';
 import Drawer from './drawer';
 
-import headerClass from '../styles/header.module.scss';
+import variables from '../variables.json';
 
 const routes = [
   { to: '/', label: 'home' },
@@ -14,17 +15,32 @@ const routes = [
   { to: '/contact', label: 'contact' },
 ]
 
+const StyledHeader = styled.header`
+  background-color: ${variables.colorPrimary0};
+
+  nav {
+      a {
+          margin-right: 16px;
+          text-decoration: none;
+          color: #FFF;
+
+          &:hover {
+              color: ${variables.colorPrimary1};
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+      }
+  }
+`;
+
 const listNav = () => routes.map(({ to, label }) => <Link to={to}>{label}</Link>);
 
-const Header = ({ siteTitle, theme }) => {
+const Header = ({ siteTitle }) => {
   const [drawer, setDrawer] = useState(false);
   return (
-    <header
-      style={{
-        background: theme.primaryColor,
-      }}
-      className={headerClass.header}
-    >
+    <StyledHeader>
       <Drawer
         open={drawer}
         onToggle={e => setDrawer(e)}
@@ -58,7 +74,7 @@ const Header = ({ siteTitle, theme }) => {
           </nav>
         </div>
       </FlexCenter>
-    </header>
+    </StyledHeader>
   )
 }
 

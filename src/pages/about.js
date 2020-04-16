@@ -1,18 +1,23 @@
 import React from "react"
-import { Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import styled from 'styled-components';
+import Img from "gatsby-image"
+import { FaReact, FaNodeJs, FaDocker } from 'react-icons/fa';
+import { DiMongodb } from 'react-icons/di';
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import FlexCenter from "../components/flexCenter"
+import Card from "../components/card"
 
 import styles from '../variables.json';
 
 const topSkills = [
   {
-  title: 'React', desc: 'Building reusable components with the new Hooks API. Redux, ImmerJS and Styled Components are my go-to dependencies.'
+  title: 'React', desc: 'Fully adapted to Hooks. Redux, ImmerJS and Styled Components are my go-to dependencies.', icon: FaReact
   },
-  {title: 'NodeJS', desc: 'Creating REST APIs with async/await logic. Express'},
-  {title: 'MongoDB', desc: 'Smartly storing data for high performance operations',
+  {title: 'NodeJS', desc: 'Creating REST APIs with async/await logic. Express', icon: FaNodeJs},
+  {title: 'MongoDB', desc: 'Smartly storing data for high performance operations', icon: DiMongodb,
 }]
 
 const inProgress = [
@@ -20,65 +25,118 @@ const inProgress = [
   title: 'GraphQL', desc: 'Building reusable components with the new Hooks API'
   },
   {title: 'TypeScript', desc: 'Exposing REST APIs with async/await logic'},
-  {title: 'Docker', desc: 'Smartly storing data for high performance operations',
+  {title: 'Docker', desc: 'Smartly storing data for high performance operations', icon: FaDocker
 }]
 
-const About = () => (
-  <Layout>
-    <SEO title="About Me" />
-    <section style={{ paddingTop: '1rem' }}>
-      <h1>about me</h1>
-      <p>Computer enginner with 3 years experience in web and mobile development.</p>
-      <p>I got into coding when sliding text with marquee tag was cool, page layouts were made with tables
-and PHP 
-      </p>
-    </section>
-    <section>
-      <h2>Top Skills</h2>
-      <p>These are the technologies I'm pretty comfortable working with at the moment.</p>
-      <div 
-        style={{ 
-          display: 'grid', 
-          gridGap: '2rem',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))' 
-        }}
-      >
-        {topSkills.map(({ title, desc }) =>
-          <Card>
-            <h3 style={{ textAlign: 'center' }}>{title}</h3>
-            <p>{desc}</p>
-          </Card>
-        )}
-      </div>
-    </section>
-    <section>
-      <h2>In Progress</h2>
-      <p>Tools I'm intrested in learning and have been using in side projects.</p>
-      <div 
-        style={{ 
-          display: 'grid', 
-          gridGap: '2rem',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))' 
-        }}
-      >
-        {inProgress.map(({ title, desc }) =>
-          <Card>
-            <h3 style={{ textAlign: 'center' }}>{title}</h3>
-            <p>{desc}</p>
-          </Card>
-        )}
-      </div>
-    </section>
-  </Layout>
-)
+const renderCards = (parentProps) => {
+  return parentProps.list.map(({ title, desc, ...props}) =>    
+    <parentProps.component>
+      {props.icon ? <props.icon className="brandIcon"/>: null}
+      <h3 style={{ textAlign: 'center' }}>{title}</h3>
+      <p>{desc}</p>
+    </parentProps.component>
+  )
+}
 
-const Card = styled.span`
-  border-radius: 1.5rem;
-  box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.3);
-  padding: 1rem;
-  background: ${styles.primaryDarker};
-  background: linear-gradient(185deg, ${styles.primaryColor} 0%, ${styles.primaryDarker} 100%);
-  color: #FFF;
+const About = () => {  
+  const data = useStaticQuery(graphql`
+    query {
+      avatarImage: file(relativePath: { eq: "avatar.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+
+  return (
+    <Layout>
+      <SEO title="About Me" />
+      <section>
+        <h1>about me</h1>
+        <FluidFlex style={{ display: 'flex' }} gutter="2rem">
+          <div style={{ flex: 1 }}>
+            <p>Computer engineer with 3 years experience in web and mobile development.</p>
+            <p>I got into coding when sliding text with marquee tag was cool, page layouts were made with tables
+      and PHP 
+            </p>
+          </div>
+          <span className="mobile-center" style={{ width: 200 }}>
+            <Img fluid={data.avatarImage.childImageSharp.fluid} style={{ borderRadius: 150 }}/>
+          </span>
+        </FluidFlex>
+      </section>
+      <section>
+        <StyledHeading type="primary">Top Skills</StyledHeading>
+        <p>These are the technologies I'm pretty comfortable working with at the moment.</p>
+        <div 
+          style={{ 
+            display: 'grid', 
+            gridGap: '2rem',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))' 
+          }}
+        >
+          {renderCards({ list: topSkills, component: PrimaryCard })}
+        </div>
+      </section>
+      <section>
+        <StyledHeading>In Progress</StyledHeading>
+        <p>Tools I'm intrested in learning and have been using in side projects.</p>
+        <div 
+          style={{ 
+            display: 'grid', 
+            gridGap: '2rem',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))' 
+          }}
+        >
+          {renderCards({ list: inProgress, component: SecondaryCard })}
+        </div>
+      </section>
+    </Layout>
+  )
+}
+
+const FluidFlex = styled.div`
+  margin: 0 -${props => props.gutter ? Number(props.gutter.replace('rem', ''))/2 + 'rem' : 0};
+
+  div {
+    margin: 0 ${props => props.gutter ? Number(props.gutter.replace('rem', ''))/2 + 'rem' : 0};
+  }
+
+  @media (max-width: 579px) {
+    flex-direction: column;
+    
+    .mobile-center {
+      margin: 0 auto;
+    }
+  }
+`;
+
+const StyledHeading = styled.h2`
+  color: ${({ type }) => type == 'primary' ? styles.colorPrimary0 : styles.colorSecondary2_0};
+  padding-left: 1rem;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    left: 0;
+    content: '';
+    width: 4px;
+    height: 2rem;
+    background-color: ${({ type }) => type == 'primary' ? styles.colorPrimary0 : styles.colorSecondary2_0};
+  }
+`;
+
+const PrimaryCard = styled(Card)`
+  background: ${styles.colorPrimary0};
+  background: linear-gradient(185deg, ${styles.colorPrimary0} 0%, ${styles.colorPrimary4} 100%);
+`;
+
+const SecondaryCard = styled(Card)`
+  background: ${styles.colorSecondary2_0};
+  background: linear-gradient(185deg, ${styles.colorSecondary2_0} 0%, ${styles.colorSecondary2_4} 100%);
 `;
 
 export default About

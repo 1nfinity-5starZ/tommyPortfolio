@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Img from "gatsby-image"
 import { FaReact, FaNodeJs, FaDocker } from 'react-icons/fa';
 import { DiMongodb } from 'react-icons/di';
+import GraphqlIcon from '../images/graphql.jsx';
+import TsIcon from '../images/tsicon.jsx';
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -22,9 +24,9 @@ const topSkills = [
 
 const inProgress = [
   {
-  title: 'GraphQL', desc: 'Building reusable components with the new Hooks API'
+  title: 'GraphQL', desc: 'Building reusable components with the new Hooks API', icon: GraphqlIcon
   },
-  {title: 'TypeScript', desc: 'Exposing REST APIs with async/await logic'},
+  {title: 'TypeScript', desc: 'Exposing REST APIs with async/await logic', icon: TsIcon},
   {title: 'Docker', desc: 'Smartly storing data for high performance operations', icon: FaDocker
 }]
 

@@ -16,6 +16,7 @@ const Card = styled.span`
         top: 0;
         right: -${props => props.iconSize/3 || 0}px;
         opacity: 0.1;
+        z-index: 80;
     }
 `;
 
@@ -30,5 +31,11 @@ export default React.memo(function({ children, ...props }) {
         }
     })
 
-    return <Card ref={ref} {...props} iconSize={width}>{children}</Card>
+    return (
+        <Card ref={ref} {...props} iconSize={width}>
+            <div style={{ zIndex: 90 }}>
+                {children}
+            </div>
+        </Card>
+    )
 })

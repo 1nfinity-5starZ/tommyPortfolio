@@ -21,5 +21,9 @@
   "colorSecondary2_1": "#8E79AD",
   "colorSecondary2_2": "#6A4E90",
   "colorSecondary2_3": "#301557",
-  "colorSecondary2_4": "#1B053A"
+  "colorSecondary2_4": "#1B053A",
+
+  
+  "tablet": 768,
+  "desktop": 1024
 }

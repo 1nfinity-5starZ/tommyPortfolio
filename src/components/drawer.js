@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 import React from "react"
 import styled from 'styled-components';
 
+import variables from '../variables.json';
+
 const StyledDrawer = styled.div`
   position: fixed;
   top: 0; bottom: 0; right: 0;
@@ -12,7 +14,7 @@ const StyledDrawer = styled.div`
   aside {
     position: absolute;
     width: 200px;
-    background-color: $primary-darker;
+    background-color: ${variables.colorPrimary4};
     transition: all 0.2s ease-in;
     padding: 2rem;
     display: flex;
@@ -24,6 +26,13 @@ const StyledDrawer = styled.div`
 
     a {
       text-decoration: none;
+      margin: 1.5rem 0;
+      font-size: 1.5rem;
+      color: white;
+
+      :hover {
+        filter: brightness(1.2)
+      }
     }
   }
 `;

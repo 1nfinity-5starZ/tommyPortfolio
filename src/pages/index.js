@@ -51,11 +51,11 @@ const IndexPage = () => {
         <p>I started this portfolio/cover website project to try out the promising <a href='#'>Gatsby</a> framework. (which is indeed awesome)</p>
         <p>Now go build something great.</p>
         <Carousel>
-          <div>gayzão</div>
-          <div>bixona</div>
+          <div style={{ height: 50 }}>abc</div>
+          <div>123</div>
           <div>a</div>
-          <div>bibxona</div>
-          <div>aaa</div>
+          <div>lalal</div>
+          <div>xaxaxa</div>
         </Carousel>
         <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
         </div>

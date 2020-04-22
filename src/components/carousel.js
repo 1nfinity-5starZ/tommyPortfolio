@@ -6,7 +6,6 @@ import variables from '../variables.json';
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 200px;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -14,20 +13,23 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   flex: 1; 
-  height: 100%;
-  position: relative; 
   overflow: hidden;
+  position: realtive;
+`;
+
+const Slider = styled.div`
+  width: ${({ length }) => length * 100}%;
+  transform: translateX(${({ offset, length }) => `-${offset/length * 100}%`});
+  transition: transform 0.3s ease-in;
+  display: flex;
 `;
 
 const Item = styled.span`
-  width: 100%;
+  width: ${({ length }) => 100 / length}%;
   height: 100%;
-  position: absolute;
-  left: ${({ offset }) => offset * 100}%;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: left 0.3s ease-in;
 `;
 
 const Selectors = styled.div`
@@ -76,7 +78,9 @@ export default React.memo(function Carousel({ children }) {
           </NavArrow>
         }
         <Container>
-          {children.map((child, i) => <Item offset={i - activeIndex}>{child}</Item>)}
+          <Slider length={children.length} offset={activeIndex}>
+            {children.map((child, i) => <Item length={children.length}>{child}</Item>)}
+          </Slider>
         </Container>
         {children.length > 0 && 
           <NavArrow style={{ visibility: activeIndex < children.length - 1 ? 'visible' : 'hidden' }} onClick={() => setActiveIndex(i => i+1 )}>

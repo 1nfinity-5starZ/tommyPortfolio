@@ -14,7 +14,6 @@ const Wrapper = styled.div`
 const Container = styled.div`
   flex: 1; 
   overflow: hidden;
-  position: realtive;
 `;
 
 const Slider = styled.div`

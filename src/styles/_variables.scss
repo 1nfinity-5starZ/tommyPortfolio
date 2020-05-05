@@ -1,26 +1,17 @@
-$primary-lighter: #8B7AAE;
-$primary-light: #655091;
-$primary-color: #452F74;
-$primary-dark: #2B1657;
-$primary-darker: #16063A;
 
-$color-primary-0: #6C256F;	// Main Primary color */
-$color-primary-1: #A46FA6;
-$color-primary-2: #88468A;
-$color-primary-3: #510E53;
-$color-primary-4: #350037;
+$color-primary-0: #973253;	// Main Secondary color (1) */
+$color-primary-1: #E297AF;
+$color-primary-2: #BD5E7C;
+$color-primary-3: #711331;
+$color-primary-4: #4B0018;
 
-$color-secondary-1-0: #973253;	// Main Secondary color (1) */
-$color-secondary-1-1: #E297AF;
-$color-secondary-1-2: #BD5E7C;
-$color-secondary-1-3: #711331;
-$color-secondary-1-4: #4B0018;
+$color-secondary-0: #4A2D73;	// Main Secondary color (2) */
+$color-secondary-1: #8E79AD;
+$color-secondary-2: #6A4E90;
+$color-secondary-3: #301557;
+$color-secondary-4: #1B053A;
 
-$color-secondary-2-0: #4A2D73;	// Main Secondary color (2) */
-$color-secondary-2-1: #8E79AD;
-$color-secondary-2-2: #6A4E90;
-$color-secondary-2-3: #301557;
-$color-secondary-2-4: #1B053A;
-
+$notMobile: "(min-width: 768px)";
+$mobile: "(max-width: 767px)";
 $tablet: "(min-width: 768px) and (max-width: 1023px)";
 $desktop: "(min-width: 1024px)";

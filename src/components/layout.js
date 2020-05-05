@@ -30,15 +30,7 @@ const Layout = ({ children }) => {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Header siteTitle={data.site.siteMetadata.title} theme={data.site.siteMetadata.theme} />
-      <main
-        style={{
-          width: '100%',
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          padding: '1rem 0 2rem'
-        }}
-      >
+      <main>
         {children}
       </main>
       <Footer theme={data.site.siteMetadata.theme}/>

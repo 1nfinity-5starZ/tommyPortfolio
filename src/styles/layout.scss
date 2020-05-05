@@ -46,7 +46,14 @@ template {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
-  color: $primary-lighter;
+  color: $color-secondary-0;
+
+  &:hover {
+    color: $color-secondary-2;
+  }
+  &:focus {
+    color: $color-secondary-1;
+  }
 }
 a:active,
 a:hover {
@@ -204,7 +211,7 @@ html {
   box-sizing: inherit;
 }
 body {
-  color: hsla(0, 0%, 0%, 0.8);
+  color: #333;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -625,12 +632,30 @@ pre tt:after {
   }
 }
 
-.desktop {
-  display: none;
+@media #{$mobile} {
+  .desktop:not(.mobile), 
+  .tablet:not(.mobile) {
+    display: none;
+  }
+  .mobile {
+    display: inherit;
+  }
+}
+
+
+@media #{$tablet} {
+  .mobile:not(.tablet),
+  .desktop:not(.tablet) {
+    display: none;
+  }
+  .tablet {
+    display: inherit;
+  }
 }
 
 @media #{$desktop} {
-  .mobile {
+  .mobile:not(.desktop), 
+  .tablet:not(.desktop) {
     display: none;
   }
   .desktop {
@@ -639,10 +664,21 @@ pre tt:after {
 }
 
 main {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
   & > section {
     max-width: 960px;
     width: 100%;
     margin: 0 auto;
     padding: 1.5rem 1rem;
+  }
+}
+
+@media #{$notMobile} {
+  main {
+    padding: 1rem 0 2rem;
   }
 }

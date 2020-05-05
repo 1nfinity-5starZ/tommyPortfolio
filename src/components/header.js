@@ -65,7 +65,7 @@ const Header = ({ siteTitle }) => {
             {siteTitle}
           </Link>
         </h2>
-        <div className="mobile">
+        <div className="mobile tablet">
           <FaBars style={{ color: '#FFF' }} onClick={() => setDrawer(true)}/>
         </div>
         <div className="desktop">

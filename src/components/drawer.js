@@ -13,7 +13,8 @@ const StyledDrawer = styled.div`
 
   aside {
     position: absolute;
-    width: 200px;
+    width: 33%;
+    min-width: 200px;
     background-color: ${variables.colorPrimary4};
     transition: all 0.2s ease-in;
     padding: 2rem;
@@ -23,6 +24,7 @@ const StyledDrawer = styled.div`
     height: 100%;
     color: #FFF;
     z-index: 100;
+    right: 0;
 
     a {
       text-decoration: none;
@@ -37,18 +39,17 @@ const StyledDrawer = styled.div`
   }
 `;
 
-const Drawer = ({ open, onToggle, size = 200, children }) => {
+const Drawer = ({ open, onToggle, children }) => {
   return (
     <StyledDrawer 
-      className={`mobile`} 
+      className={`mobile tablet`} 
       style={{ left: open ? 0 : '100%' }}
       onClick={() => onToggle(false)}
     >
       <aside 
         onClick={e => e.stopPropagation()}
         style={{
-          width: size,
-          right: open ? 0 : -size,
+          transform: `translateX(${open ? 0 : '100%'})`,
         }}
       >
         {children}

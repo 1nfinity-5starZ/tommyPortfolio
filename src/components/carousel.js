@@ -49,9 +49,18 @@ const Selector = styled.span`
 const NavArrow = styled.span`
   zIndex: 99;
   cursor: pointer;
+  font-size: 1.75rem;
 
   :hover {
     opacity: 0.7;
+  }
+
+  :first-child {
+    padding-right: 1em;
+  }
+
+  :last-child {
+    padding-left: 1em;
   }
 `;
 
@@ -90,7 +99,7 @@ export default React.memo(function Carousel({ children }) {
       <Selectors>
         {Array.from({ length: children.length }).map((_, i) =>
           <Selector onClick={() => setActiveIndex(i)}>
-            <FaCircle style={{ color: activeIndex==i ? variables.colorSecondary1_3 : variables.colorSecondary1_1, transition: 'color 0.3s ease-in' }}/>  
+            <FaCircle style={{ color: activeIndex==i ? variables.colorSecondary3 : variables.colorSecondary1, transition: 'color 0.3s ease-in' }}/>  
           </Selector>
         )}
       </Selectors>

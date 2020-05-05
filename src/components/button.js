@@ -5,7 +5,7 @@ import styles from '../variables.json';
 
 const Container = styled.span`
   border-radius: 1.25rem;
-  background-color: ${styles.primaryDark};
+  background-color: ${styles.colorSecondary0};
   padding: 0.5rem 1rem;
   color: #FFF;
   margin-bottom: 1rem;
@@ -15,11 +15,11 @@ const Container = styled.span`
   font-size: 1rem;
 
   &:hover {
-    background-color: ${styles.primaryColor};
+    background-color: ${styles.colorSecondary2};
   }
 
   &:active {
-    background-color: ${styles.primaryLight};
+    background-color: ${styles.colorSecondary1};
   }
 `;
 

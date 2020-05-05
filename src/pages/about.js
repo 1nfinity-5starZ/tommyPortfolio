@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from 'styled-components';
 import Img from "gatsby-image"
-import { FaReact, FaNodeJs, FaDocker } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaDocker, FaAws, FaJira, FaGit } from 'react-icons/fa';
 import { DiMongodb } from 'react-icons/di';
 import GraphqlIcon from '../images/graphql.jsx';
 import TsIcon from '../images/tsicon.jsx';
@@ -11,6 +11,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import FlexCenter from "../components/flexCenter"
 import Card from "../components/card"
+import Heading from "../components/heading"
 
 import styles from '../variables.json';
 
@@ -18,16 +19,19 @@ const topSkills = [
   {
   title: 'React', desc: 'Fully adapted to Hooks. Redux, ImmerJS and Styled Components are my go-to dependencies.', icon: FaReact
   },
-  {title: 'NodeJS', desc: 'Creating REST APIs with async/await logic. Express', icon: FaNodeJs},
-  {title: 'MongoDB', desc: 'Smartly storing data for high performance operations', icon: DiMongodb,
+  {title: 'NodeJS', desc: 'Been using NodeJS in back-end along with Express to create REST APIs.', icon: FaNodeJs},
+  {title: 'MongoDB', desc: 'Most modern applications can benefit from a non-relational database.', icon: DiMongodb },
+  {title: 'AWS', desc: 'Familiar with EC2, S3, EB and Lambda Functions for serverless applications.', icon: FaAws }, 
+  {title: 'Jira', desc: 'One of the best tools to manage teams using agile methods.', icon: FaJira }, 
+  {title: 'Git', desc: 'For versioning and sharing code with the team.', icon: FaGit, 
 }]
 
 const inProgress = [
   {
-  title: 'GraphQL', desc: 'Building reusable components with the new Hooks API', icon: GraphqlIcon
+  title: 'GraphQL', desc: 'REST is great, but GraphQL seems promissing to increase reusability and avoid overfetching.', icon: GraphqlIcon
   },
-  {title: 'TypeScript', desc: 'Exposing REST APIs with async/await logic', icon: TsIcon},
-  {title: 'Docker', desc: 'Smartly storing data for high performance operations', icon: FaDocker
+  {title: 'TypeScript', desc: 'Type errors are very common (and annoying) in JavaScript.', icon: TsIcon},
+  {title: 'Docker', desc: 'Containerization brings DevOps to a whole new level.', icon: FaDocker
 }]
 
 const renderCards = (parentProps) => {
@@ -57,21 +61,20 @@ const About = () => {
     <Layout>
       <SEO title="About Me" />
       <section>
-        <h1>about me</h1>
+        <h1>Intro</h1>
         <FluidFlex style={{ display: 'flex' }} gutter="2rem">
-          <div style={{ flex: 1 }}>
-            <p>Computer engineer with 3 years experience in web and mobile development.</p>
-            <p>I got into coding when sliding text with marquee tag was cool, page layouts were made with tables
-      and PHP 
-            </p>
+          <div style={{ flex: 2 }}>
+            <p>Electrical & Computer Engineering degree at Universidade de São Paulo.</p>
+            <p>3 years experience as fullstack developer, mainly using the MERN stack for web along with React Native for mobile.</p>
+            <p>Lately leaning towards frontend to focus on customer experience and learn more about UX and UI.</p>
           </div>
-          <span className="mobile-center" style={{ width: 200 }}>
+          <span className="mobile-center" style={{ flex: 1, maxWidth: 250, width: '100%' }}>
             <Img fluid={data.avatarImage.childImageSharp.fluid} style={{ borderRadius: 150 }}/>
           </span>
         </FluidFlex>
       </section>
       <section>
-        <StyledHeading type="primary">Top Skills</StyledHeading>
+        <Heading type="primary">Top Skills</Heading>
         <p>These are the technologies I'm pretty comfortable working with at the moment.</p>
         <div 
           style={{ 
@@ -84,7 +87,7 @@ const About = () => {
         </div>
       </section>
       <section>
-        <StyledHeading>In Progress</StyledHeading>
+        <Heading type="secondary">In Progress</Heading>
         <p>Tools I'm intrested in learning and have been using in side projects.</p>
         <div 
           style={{ 
@@ -116,29 +119,14 @@ const FluidFlex = styled.div`
   }
 `;
 
-const StyledHeading = styled.h2`
-  color: ${({ type }) => type == 'primary' ? styles.colorPrimary0 : styles.colorSecondary2_0};
-  padding-left: 1rem;
-  position: relative;
-
-  &:before {
-    position: absolute;
-    left: 0;
-    content: '';
-    width: 4px;
-    height: 2rem;
-    background-color: ${({ type }) => type == 'primary' ? styles.colorPrimary0 : styles.colorSecondary2_0};
-  }
-`;
-
 const PrimaryCard = styled(Card)`
   background: ${styles.colorPrimary0};
   background: linear-gradient(185deg, ${styles.colorPrimary0} 0%, ${styles.colorPrimary4} 100%);
 `;
 
 const SecondaryCard = styled(Card)`
-  background: ${styles.colorSecondary2_0};
-  background: linear-gradient(185deg, ${styles.colorSecondary2_0} 0%, ${styles.colorSecondary2_4} 100%);
+  background: ${styles.colorSecondary0};
+  background: linear-gradient(185deg, ${styles.colorSecondary0} 0%, ${styles.colorSecondary4} 100%);
 `;
 
 export default About

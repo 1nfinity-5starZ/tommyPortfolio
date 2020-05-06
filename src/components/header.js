@@ -20,7 +20,7 @@ const StyledHeader = styled.header`
 
   nav {
       a {
-          margin-right: 16px;
+          margin-right: 1.5rem;
           text-decoration: none;
           color: #FFF;
 

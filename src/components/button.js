@@ -8,7 +8,6 @@ const Container = styled.span`
   background-color: ${styles.colorSecondary0};
   padding: 0.5rem 1rem;
   color: #FFF;
-  margin-bottom: 1rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;

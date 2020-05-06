@@ -35,8 +35,8 @@ const inProgress = [
 }]
 
 const renderCards = (parentProps) => {
-  return parentProps.list.map(({ title, desc, ...props}) =>    
-    <parentProps.component>
+  return parentProps.list.map(({ title, desc, ...props }, i) =>    
+    <parentProps.component key={i}>
       {props.icon ? <props.icon className="brandIcon"/>: null}
       <h3 style={{ textAlign: 'center' }}>{title}</h3>
       <p>{desc}</p>
@@ -61,7 +61,7 @@ const About = () => {
     <Layout>
       <SEO title="About Me" />
       <section>
-        <h1>Intro</h1>
+        <h2>About</h2>
         <FluidFlex style={{ display: 'flex' }} gutter="2rem">
           <div style={{ flex: 2 }}>
             <p>Electrical & Computer Engineering degree at Universidade de São Paulo.</p>

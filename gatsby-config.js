@@ -1,11 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Tommy Tech`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    theme: {
-      primaryColor: `#452F74`
-    }
+    description: `My personal portfolio website. Welcome!`,
+    author: `@tommyherbst`,
   },
   plugins: [
     `gatsby-plugin-styled-components`,

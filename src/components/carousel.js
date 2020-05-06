@@ -64,18 +64,20 @@ const NavArrow = styled.span`
   }
 `;
 
-export default React.memo(function Carousel({ children }) {
+export default React.memo(function Carousel({ children, autoplay = false }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setActiveIndex(i => (i + 1) % children.length)
-  //   }, 4000)
-
-  //   return () => {
-  //     clearInterval(timer);
-  //   }
-  // }, [children])
+  useEffect(() => {
+    if(autoplay) {
+      const timer = setInterval(() => {
+        setActiveIndex(i => (i + 1) % children.length)
+      }, 4000)
+  
+      return () => {
+        clearInterval(timer);
+      }
+    }
+  }, [children, autoplay])
 
   return (
     <>
@@ -87,7 +89,10 @@ export default React.memo(function Carousel({ children }) {
         }
         <Container>
           <Slider length={children.length} offset={activeIndex}>
-            {children.map((child, i) => <Item length={children.length}>{child}</Item>)}
+            {children.length > 0 ?
+              children.map((child, i) => <Item key={i} length={children.length}>{child}</Item>):
+              <Item length={1}>{children}</Item>
+            }
           </Slider>
         </Container>
         {children.length > 0 && 

@@ -62,7 +62,7 @@ const FooterContainer = styled.section`
 const Footer = () => (  
   <StyledFooter>
     <FooterContainer> 
-      <span style={{ flex: 1 }}>Thomas Herbst</span>
+      <span style={{ flex: 1 }}>© Thomas Herbst {new Date().getFullYear()}</span>
       <span style={{ width: 1, backgroundColor: '#AAA'}}></span>
       <nav style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
         <FooterLink href="https://github.com/1nfinity-5starZ">

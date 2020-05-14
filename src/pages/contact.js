@@ -1,10 +1,8 @@
 import React from "react"
-import { Link } from "gatsby"
 import { FaGithub, FaLinkedin, FaEnvelope, FaFacebook, FaInstagram } from "react-icons/fa";
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import FlexCenter from "../components/flexCenter";
 import Button from "../components/button";
 
 const links = [

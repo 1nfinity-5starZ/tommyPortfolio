@@ -9,6 +9,8 @@ import Drawer from './drawer';
 
 import variables from '../variables.json';
 
+import logo from '../images/tommyHerbstLogo2.png';
+
 const routes = [
   { to: '/', label: 'home' },
   { to: '/about', label: 'about' },
@@ -62,7 +64,12 @@ const Header = ({ siteTitle }) => {
               textDecoration: `none`,
             }}
           >
-            {siteTitle}
+            <FlexCenter>
+              <span style={{ backgroundColor: 'white', marginRight: '0.75rem', padding: 4, display: 'flex' }}>
+                <img src={logo} style={{ margin: 0 }}/>
+              </span>
+              {siteTitle}
+            </FlexCenter>
           </Link>
         </h2>
         <div className="mobile tablet">

@@ -1,12 +1,10 @@
 import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
 import Carousel from "../components/carousel"
 import FlexCenter from "../components/flexCenter"
-
-import variables from '../variables.json';
 
 export default function PortfolioCarousel() {
   const data = useStaticQuery(graphql`

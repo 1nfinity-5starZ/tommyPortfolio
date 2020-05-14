@@ -1,12 +1,11 @@
-import React from 'react';
 import styled from 'styled-components';
 
 import styles from '../variables.json';
 
 const Heading = styled.h2`
-  color: ${({ type }) => type == 'primary' ? 
+  color: ${({ type }) => type === 'primary' ? 
     styles.colorPrimary0 : 
-      type == 'secondary' ?
+      type === 'secondary' ?
       styles.colorSecondary0 :
       'inherit'
   };
@@ -19,9 +18,9 @@ const Heading = styled.h2`
     content: '';
     width: 4px;
     height: 2rem;
-    background-color: ${({ type }) => type == 'primary' ? 
+    background-color: ${({ type }) => type === 'primary' ? 
       styles.colorPrimary0 : 
-        type == 'secondary' ?
+        type === 'secondary' ?
         styles.colorSecondary0 :
         '#333'
     };

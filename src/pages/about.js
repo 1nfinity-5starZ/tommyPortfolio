@@ -9,7 +9,6 @@ import TsIcon from '../images/tsicon.jsx';
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import FlexCenter from "../components/flexCenter"
 import Card from "../components/card"
 import Heading from "../components/heading"
 

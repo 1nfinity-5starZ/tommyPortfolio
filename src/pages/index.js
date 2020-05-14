@@ -13,7 +13,7 @@ const HeroContainer = styled.section`
   position: relative;
   padding: 0;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     margin-top: -1rem;
   }
 
@@ -57,7 +57,7 @@ const IndexPage = () => {
       <SEO title="Home" />
       <HeroContainer>
         <div className="innerContainer">
-          <h1 style={{ textAlign: 'center', color: variables.colorPrimary4, padding: '1rem 2rem', fontSize: '2.75rem' }}>Creating amazing experiences</h1>
+          <h1 style={{ textAlign: 'center', color: variables.colorPrimary3, padding: '1rem 2rem', fontSize: '2.75rem' }}>Creating amazing experiences</h1>
         </div>
         <Img fluid={data.heroImage.childImageSharp.fluid} style={{ maxHeight: 350 }} />
       </HeroContainer>

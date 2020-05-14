@@ -29,7 +29,7 @@ const HeroContainer = styled.section`
       justify-content: center;
       color: #FFF;
       padding: 1rem;
-      background-color: rgba(255,255,255,0.5);
+      background-color: rgba(255,255,255,0.6);
       
       // @media (min-width: 768px) {
       //   outline: 10px solid rgba(255,255,255,0.25);
@@ -55,7 +55,7 @@ const IndexPage = () => {
       <SEO title="Home" />
       <HeroContainer>
         <div className="innerContainer">
-          <h1 style={{ textAlign: 'center', color: variables.colorPrimary4, padding: '1rem 2rem' }}>Building amazing experiences</h1>
+          <h1 style={{ textAlign: 'center', color: variables.colorPrimary4, padding: '1rem 2rem', fontSize: '2.75rem' }}>Creating amazing experiences</h1>
         </div>
         <Img fluid={data.heroImage.childImageSharp.fluid} style={{ maxHeight: 350 }} />
       </HeroContainer>
@@ -64,10 +64,9 @@ const IndexPage = () => {
       </div>
       <section style={{ paddingTop: '1rem' }}>
         <h2>Hi people</h2>
-        <p>I created this portfolio/cover website to try out the promising <a href='#'>Gatsby</a> framework (which is indeed awesome).</p>
+        <p>I created this portfolio/cover website to try out the promising <a href='https://www.gatsbyjs.org/'>Gatsby</a> framework (which is indeed awesome).</p>
         <p>It's open source and available <a href="https://github.com/1nfinity-5starZ/tommyPortfolio" target="_newtab">here</a>. 
-        My goal was to use as few dependencies as possible and build my own components, like the carousel, gallery, drawer, cards, etc. 
-        It's all open-source and available <a href="#">here</a>.</p>
+        My goal was to use as few dependencies as possible and build my own components, like the carousel, gallery, drawer, cards, etc.</p>
       </section>
       <section>
         <h2>Projects</h2>

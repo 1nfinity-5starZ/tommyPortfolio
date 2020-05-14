@@ -11,6 +11,20 @@ import variables from '../variables.json';
 export default function PortfolioCarousel() {
   const data = useStaticQuery(graphql`
     query {
+      medcelStudentAreaMobile: file(relativePath: { eq: "portfolioScreens/medcelStudentAreaMobile.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      medcelStudentAreaDesktop: file(relativePath: { eq: "portfolioScreens/medcelStudentAreaDesktop.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      } 
       medcelSiteMobile: file(relativePath: { eq: "portfolioScreens/medcelSiteMobile.png" }) {
         childImageSharp {
           fluid {
@@ -80,6 +94,12 @@ export default function PortfolioCarousel() {
 
   return (
     <Carousel>
+      <Car 
+        title="Medcel Student Area"
+        link="http://areaaluno.medcel.com.br"
+        desc="Medcel main product, its online learning platform. Try the 7 day free trial."
+        images={<Img fluid={artDirectBuilder('medcelStudentArea')} />}
+      />
       <Car 
         title="Medcel Website"
         link="http://medcel.com.br"

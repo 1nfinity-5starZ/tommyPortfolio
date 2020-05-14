@@ -18,10 +18,7 @@ const HeroContainer = styled.section`
   }
 
   .innerContainer {
-      height: 66.66%;
-      width: 66.66%;
-      left: 16.66%;
-      top: 16.66%;
+      height: 100%;
       position: absolute;
       z-index: 1;
       display: flex;
@@ -31,9 +28,14 @@ const HeroContainer = styled.section`
       padding: 1rem;
       background-color: rgba(255,255,255,0.6);
       
-      // @media (min-width: 768px) {
-      //   outline: 10px solid rgba(255,255,255,0.25);
-      // }
+      @media (min-width: 768px) {
+        height: 66.66%;
+        width: 66.66%;
+        left: 16.66%;
+        top: 16.66%;
+        // outline: 10px solid rgba(255,255,255,0.25);
+      }
+
   }
 `;
 
@@ -59,9 +61,9 @@ const IndexPage = () => {
         </div>
         <Img fluid={data.heroImage.childImageSharp.fluid} style={{ maxHeight: 350 }} />
       </HeroContainer>
-      <div style={{ fontStyle: 'italic', textAlign: 'center' }}>
+      {/* <div style={{ fontStyle: 'italic', textAlign: 'center' }}>
         still working on a nice hero
-      </div>
+      </div> */}
       <section style={{ paddingTop: '1rem' }}>
         <h2>Hi people</h2>
         <p>I created this portfolio/cover website to try out the promising <a href='https://www.gatsbyjs.org/'>Gatsby</a> framework (which is indeed awesome).</p>

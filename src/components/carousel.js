@@ -103,7 +103,7 @@ export default React.memo(function Carousel({ children, autoplay = false }) {
       </Wrapper>
       <Selectors>
         {Array.from({ length: children.length }).map((_, i) =>
-          <Selector onClick={() => setActiveIndex(i)}>
+          <Selector key={i} onClick={() => setActiveIndex(i)}>
             <FaCircle style={{ color: activeIndex==i ? variables.colorSecondary3 : variables.colorSecondary1, transition: 'color 0.3s ease-in' }}/>  
           </Selector>
         )}

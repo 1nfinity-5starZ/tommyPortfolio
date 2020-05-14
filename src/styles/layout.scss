@@ -396,6 +396,10 @@ p {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 figure {
   margin-left: 0;

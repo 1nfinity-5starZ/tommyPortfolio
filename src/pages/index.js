@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useLayoutEffect, useState } from "react"
 import Img from "gatsby-image"
 import styled, { keyframes } from "styled-components"
 
@@ -76,7 +76,7 @@ const IndexPage = () => {
   const [index, setIndex] = useState(0)
   const [finished, setFinished] = useState(false)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let id = setInterval(() => {
       setIndex(i => {
         if(i === 2) {

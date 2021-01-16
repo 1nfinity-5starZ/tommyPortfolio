@@ -9,6 +9,20 @@ import FlexCenter from "../components/flexCenter"
 export default function PortfolioCarousel() {
   const data = useStaticQuery(graphql`
     query {
+      b2bAfyaMobile: file(relativePath: { eq: "portfolioScreens/b2bAfyaLPMobile.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      b2bAfyaDesktop: file(relativePath: { eq: "portfolioScreens/b2bAfyaLPDesktop.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      } 
       medcelStudentAreaMobile: file(relativePath: { eq: "portfolioScreens/medcelStudentAreaMobile.png" }) {
         childImageSharp {
           fluid {
@@ -93,16 +107,15 @@ export default function PortfolioCarousel() {
   return (
     <Carousel>
       <Car 
-        title="Medcel Student Area"
-        link="http://areaaluno.medcel.com.br"
-        desc="Medcel main product, its online learning platform. Try the 7 day free trial."
-        images={<Img fluid={artDirectBuilder('medcelStudentArea')} />}
+        title="Afya B2B Landing Page"
+        link="http://portal.dasaeduca.com.br"
+        desc="Afya's new B2B partnership with DASA"
+        images={<Img fluid={artDirectBuilder('b2bAfya')} />}
       />
       <Car 
-        title="Medcel Website"
-        link="http://medcel.com.br"
-        desc="E-commerce for the Medcel online courses"
-        images={<Img fluid={artDirectBuilder('medcelSite')} />}
+        title="Afya Admin"
+        desc="Internal management system for Afya, supporting all company's areas"
+        images ={<Img fluid={artDirectBuilder('afyaAdmin')} />}
       />
       <Car 
         title="Afya Website"
@@ -111,19 +124,22 @@ export default function PortfolioCarousel() {
         images ={<Img fluid={artDirectBuilder('afyaSite')} />}
       />
       <Car 
+        title="Medcel Website"
+        link="http://medcel.com.br"
+        desc="E-commerce for the Medcel online courses"
+        images={<Img fluid={artDirectBuilder('medcelSite')} />}
+      />
+      <Car 
+        title="Medcel Student Area"
+        link="http://areaaluno.medcel.com.br"
+        desc="Medcel main product, its online learning platform. Try the 7 day free trial."
+        images={<Img fluid={artDirectBuilder('medcelStudentArea')} />}
+      />
+      <Car 
         title="Medcel Admin"
         desc="Internal management system for Medcel, supporting all company's areas"
         images ={<Img fluid={artDirectBuilder('medcelAdmin')} />}
       />
-      <Car 
-        title="Afya Admin"
-        desc="Internal management system for Afya, supporting all company's areas"
-        images ={<Img fluid={artDirectBuilder('afyaAdmin')} />}
-      />
-      {/* <div>Area do Aluno</div>
-      <div>Medcel Admin</div>
-      <div>Afya Admin</div>
-      <div>Home Energy Reader</div> */}
     </Carousel>
   )
 }

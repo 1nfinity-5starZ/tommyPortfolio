@@ -1,7 +1,6 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import React, { useEffect, useState } from "react"
 import Img from "gatsby-image"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -9,61 +8,94 @@ import PortfolioCarousel from "../components/portfolioCarousel"
 
 import variables from '../variables.json';
 
-const HeroContainer = styled.section`
+const fadeInOut = keyframes`
+  0% {
+    opacity:0;
+  }
+  25% {
+    opacity:1;
+  }
+  75% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+`;
+
+const HeroContainer = styled.div`
   position: relative;
   padding: 0;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  color: #FFF;
+  margin-bottom: 1em;
+  justify-content: space-around;
+  
+  background: linear-gradient(180deg, ${variables.colorPrimary0} 0%, ${variables.colorPrimary0} calc(50% - 1px), ${variables.colorSecondary0} 50%, ${variables.colorSecondary2} 100%);
+  flex-direction: column;
+
+  @media (min-width: 830px) {
+    background: linear-gradient(90deg, ${variables.colorPrimary0} 0%, ${variables.colorPrimary0} calc(50% - 1px), ${variables.colorSecondary0} 50%, ${variables.colorSecondary2} 100%);
+    flex-direction: row;
+
+    h1 {
+      flex: 1;
+    }
+  }
 
   @media (min-width: 1024px) {
     margin-top: -1rem;
   }
 
-  .innerContainer {
-      height: 100%;
-      position: absolute;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #FFF;
-      padding: 1rem;
-      background-color: rgba(255,255,255,0.6);
-      
-      @media (min-width: 768px) {
-        height: 66.66%;
-        width: 66.66%;
-        left: 16.66%;
-        top: 16.66%;
-        // outline: 10px solid rgba(255,255,255,0.25);
-      }
+  h1 {
+    margin: 0;
+    text-align: center;
+  }
 
+  &:not(.finished) {
+    h1 {
+      animation: ${fadeInOut} ease 3s infinite;
+    }
+  }
+  
+  .centerText {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
   }
 `;
 
+const words = ['Creating', 'Amazing', 'Experiences'];
+
 const IndexPage = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      heroImage: file(relativePath: { eq: "hero.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
+
+  const [index, setIndex] = useState(0)
+  const [finished, setFinished] = useState(false)
+
+  useEffect(() => {
+    let id = setInterval(() => {
+      setIndex(i => {
+        if(i === 2) {
+          clearInterval(id);
+          setFinished(true);
         }
-      }
-    }
-  `)
+        return (i + 1) % 3
+      });
+    }, 3000)
+  },[])
 
   return (
     <Layout>
       <SEO title="Home" />
-      <HeroContainer>
-        <div className="innerContainer">
-          <h1 style={{ textAlign: 'center', color: variables.colorPrimary3, padding: '1rem 2rem', fontSize: '2.75rem' }}>Creating amazing experiences</h1>
-        </div>
-        <Img fluid={data.heroImage.childImageSharp.fluid} style={{ maxHeight: 350 }} />
+      <HeroContainer className={finished ? 'finished' : ''}>
+        <h1 style={{ color: variables.colorPrimary4 }}>{words[index]}</h1>
+        <h1 className="centerText">{words[(index+1)%3]}</h1>
+        <h1 style={{ color: variables.colorSecondary4 }}>{words[(index+2)%3]}</h1>
       </HeroContainer>
-      {/* <div style={{ fontStyle: 'italic', textAlign: 'center' }}>
-        still working on a nice hero
-      </div> */}
       <section style={{ paddingTop: '1rem' }}>
         <h2>Hi people</h2>
         <p>I created this portfolio/cover website to try out the promising <a href='https://www.gatsbyjs.org/'>Gatsby</a> framework (which is indeed awesome).</p>

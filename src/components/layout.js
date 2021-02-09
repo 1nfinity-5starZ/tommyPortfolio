@@ -8,6 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import PageTransition from 'gatsby-plugin-page-transitions';
 
 import Header from "./header"
 import Footer from "./footer"
@@ -27,9 +28,11 @@ const Layout = ({ children }) => {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <main>
-        {children}
-      </main>
+        <PageTransition>
+            <main>
+              {children}
+            </main>
+        </PageTransition>
       <Footer/>
     </div>
   )
